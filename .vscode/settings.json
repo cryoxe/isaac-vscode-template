@@ -72,8 +72,9 @@
         "call_arg_parentheses": "always" // ALWAYS call functions with parenthesis
     },
     "Lua.nameStyle.config": {
-        "local_name_style": [ // local variables in camelCase like: "local playerDamage = 1"
-            "camel_case",
+        "local_name_style": [
+            "camel_case", // local variables in camelCase like: "local playerDamage = 1"
+            "upper_snake_case" // If you want to define constants "local MY_CONST = 1" without using the `<const>` keyword
         ],
         "function_param_name_style": [ // function parameters in camelCase "usedParam" OR "_" or "_thisParamIsNotUsed"
             "camel_case",
