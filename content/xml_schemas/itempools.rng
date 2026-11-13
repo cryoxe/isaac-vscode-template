@@ -1,0 +1,84 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <ref name="itemPoolsContent" />
+    </start>
+
+    <define name="itemPoolsContent">
+        <element name="ItemPools">
+            <zeroOrMore>
+                <ref name="poolContent" />
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="poolContent">
+        <element name="Pool">
+            <attribute name="Name">
+                <choice>
+                    <value>treasure</value>
+                    <value>shop</value>
+                    <value>boss</value>
+                    <value>devil</value>
+                    <value>angel</value>
+                    <value>secret</value>
+                    <value>library</value>
+                    <value>shellGame</value>
+                    <value>goldenChest</value>
+                    <value>redChest</value>
+                    <value>beggar</value>
+                    <value>demonBeggar</value>
+                    <value>curse</value>
+                    <value>keyMaster</value>
+                    <value>batteryBum</value>
+                    <value>momsChest</value>
+                    <value>greedTreasure</value>
+                    <value>greedBoss</value>
+                    <value>greedShop</value>
+                    <value>greedCurse</value>
+                    <value>greedDevil</value>
+                    <value>greedAngel</value>
+                    <value>greedSecret</value>
+                    <value>craneGame</value>
+                    <value>ultraSecret</value>
+                    <value>bombBum</value>
+                    <value>planetarium</value>
+                    <value>oldChest</value>
+                    <value>babyShop</value>
+                    <value>woodenChest</value>
+                    <value>rottenBeggar</value>
+                    <data type="string" />
+                </choice>
+            </attribute>
+            <zeroOrMore>
+                <ref name="itemContent" />
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="itemContent">
+        <element name="Item">
+            <choice>
+                <attribute name="Id">
+                    <data type="integer" />
+                </attribute>
+                <attribute name="Name" />
+            </choice>
+            <optional>
+                <attribute name="Weight">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="DecreaseBy">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="RemoveOn">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+        </element>
+    </define>
+</grammar>

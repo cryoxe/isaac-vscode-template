@@ -1,0 +1,78 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <ref name="costumesContent" />
+    </start>
+
+    <define name="costumesContent">
+        <element name="costumes">
+            <attribute name="anm2root" />
+            <zeroOrMore>
+                <ref name="costumeContent" />
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="costumeContent">
+        <element name="costume">
+            <attribute name="anm2path" />
+            <attribute name="type">
+                <choice>
+                    <value>none</value>
+                    <value>passive</value>
+                    <value>active</value>
+                    <value>familiar</value>
+                    <value>trinket</value>
+                </choice>
+            </attribute>
+            <optional>
+                <attribute name="id">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="name" />
+            </optional>
+            <optional>
+                <attribute name="priority">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="overwriteColor">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="isFlying">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="skinColor">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="hasSkinAlt">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="hasOverlay">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="forceBodyColor">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="forceHeadColor">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+        </element>
+    </define>
+</grammar>

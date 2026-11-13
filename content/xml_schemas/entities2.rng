@@ -1,0 +1,403 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <ref name="entitiesContent" />
+    </start>
+
+    <define name="entitiesContent">
+        <element name="entities">
+            <optional>
+                <attribute name="anm2root" />
+            </optional>
+            <optional>
+                <attribute name="version">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="deathanm2" />
+            </optional>
+            <zeroOrMore>
+                <ref name="entityContent" />
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="entityContent">
+        <element name="entity">
+            <attribute name="name" />
+            <attribute name="id">
+                <data type="integer" />
+            </attribute>
+            <optional>
+                <attribute name="variant">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="subtype">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="anm2path" />
+            </optional>
+
+            <optional>
+                <attribute name="baseHP">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="stageHP">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="shieldStrength">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+
+            <optional>
+                <attribute name="boss">
+                    <choice>
+                        <value>0</value>
+                        <value>1</value>
+                    </choice>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="bossID">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="champion">
+                    <choice>
+                        <value>0</value>
+                        <value>1</value>
+                    </choice>
+                </attribute>
+            </optional>
+
+            <optional>
+                <attribute name="collisionDamage">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="collisionMass">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="collisionRadius">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="collisionRadiusXMulti">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="collisionRadiusYMulti">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="collisionInterval">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="numGridCollisionPoints">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="friction">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="shadowSize">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="gridCollision">
+                    <choice>
+                        <value>none</value>
+                        <value>nopits</value>
+                        <value>ground</value>
+                        <value>walls</value>
+                        <value>floor</value>
+                        <value>bullet</value>
+                    </choice>
+                </attribute>
+            </optional>
+
+            <optional>
+                <attribute name="tags" />
+            </optional>
+            <optional>
+                <attribute name="portrait">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="hasFloorAlts">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="reroll">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="shutdoors">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="gibAmount">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="gibFlags" />
+            </optional>
+            <optional>
+                <attribute name="bestiaryAnim" />
+            </optional>
+            <optional>
+                <attribute name="bestiaryOverlay" />
+            </optional>
+
+            <optional>
+                <attribute name="coinvalue">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="customtags" />
+            </optional>
+            <optional>
+                <attribute name="nosplit">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="bagofcrafting" />
+            </optional>
+            <optional>
+                <attribute name="meleecollide">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="boomerang">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="isactiveenemy">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+
+            <zeroOrMore>
+                <choice>
+                    <ref name="gibsContent" />
+                    <ref name="bestiaryContent" />
+                    <ref name="devolveContent" />
+                    <ref name="preloadContent" />
+                    <ref name="preloadSndContent" />
+                </choice>
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="gibsContent">
+        <element name="gibs">
+            <optional>
+                <attribute name="amount">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="blood">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="bone">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="chain">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="color">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="dust">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="eye">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="gut">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="huge">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="large">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="poop">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="rock">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="rock_small">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="small">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="sound_baby">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="sound_bone">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="tooth">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="worm">
+                    <ref name="gibFlagValue" />
+                </attribute>
+            </optional>
+        </element>
+    </define>
+
+    <define name="gibFlagValue">
+        <choice>
+            <value>0</value>
+            <value>1</value>
+        </choice>
+    </define>
+
+    <define name="bestiaryContent">
+        <element name="bestiary">
+            <optional>
+                <attribute name="anim" />
+            </optional>
+            <optional>
+                <attribute name="overlay" />
+            </optional>
+            <optional>
+                <attribute name="transform" />
+            </optional>
+            <optional>
+                <attribute name="anm2path" />
+            </optional>
+            <optional>
+                <attribute name="alt" />
+            </optional>
+        </element>
+    </define>
+
+    <define name="devolveContent">
+        <element name="devolve">
+            <attribute name="id" />
+            <optional>
+                <attribute name="variant">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="subtype">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="weight">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+        </element>
+    </define>
+
+    <define name="preloadContent">
+        <element name="preload">
+            <optional>
+                <attribute name="id">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="variant">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="subtype">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="name" />
+            </optional>
+            <optional>
+                <attribute name="path" />
+            </optional>
+        </element>
+    </define>
+
+    <define name="preloadSndContent">
+        <element name="preload-snd">
+            <attribute name="id">
+                <data type="integer" />
+            </attribute>
+            <optional>
+                <attribute name="name" />
+            </optional>
+        </element>
+    </define>
+</grammar>

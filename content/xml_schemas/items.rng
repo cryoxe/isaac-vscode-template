@@ -1,0 +1,347 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <ref name="itemsContent" />
+    </start>
+
+    <define name="itemsContent">
+        <element name="items">
+            <zeroOrMore>
+                <choice>
+                    <ref name="activeContent" />
+                    <ref name="passiveContent" />
+                    <ref name="familiarContent" />
+                    <ref name="trinketContent" />
+                    <ref name="nullContent" />
+                </choice>
+            </zeroOrMore>
+            <attribute name="gfxroot" />
+            <attribute name="version">
+                <data type="integer" />
+            </attribute>
+            <optional>
+                <attribute name="deathanm2" />
+            </optional>
+        </element>
+    </define>
+
+    <define name="activeContent">
+        <element name="active">
+            <optional>
+                <attribute name="id">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <attribute name="quality">
+                <data type="integer" />
+            </attribute>
+            <attribute name="name" />
+            <attribute name="description" />
+            <attribute name="gfx" />
+            <attribute name="maxcharges">
+                <data type="integer" />
+            </attribute>
+            <optional>
+                <attribute name="chargetype">
+                    <choice>
+                        <value>normal</value>
+                        <value>timed</value>
+                        <value>special</value>
+                    </choice>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="initcharge">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="passivecache">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="activegfxpath" />
+            </optional>
+
+            <ref name="commonOptionalAttributes" />
+            <ref name="statAttributes" />
+        </element>
+    </define>
+
+    <define name="passiveContent">
+        <element name="passive">
+            <optional>
+                <attribute name="id">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <attribute name="quality">
+                <data type="integer" />
+            </attribute>
+            <attribute name="name" />
+            <attribute name="description" />
+            <attribute name="gfx" />
+
+            <ref name="commonOptionalAttributes" />
+            <ref name="statAttributes" />
+        </element>
+    </define>
+
+    <define name="familiarContent">
+        <element name="familiar">
+            <optional>
+                <attribute name="id">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <attribute name="quality">
+                <data type="integer" />
+            </attribute>
+            <attribute name="name" />
+            <attribute name="description" />
+            <attribute name="gfx" />
+            <optional>
+                <attribute name="passivecache">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+
+            <ref name="commonOptionalAttributes" />
+            <ref name="statAttributes" />
+        </element>
+    </define>
+
+    <define name="trinketContent">
+        <element name="trinket">
+            <optional>
+                <attribute name="id">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <attribute name="name" />
+            <attribute name="description" />
+            <attribute name="gfx" />
+
+            <ref name="commonOptionalAttributes" />
+            <ref name="statAttributes" />
+        </element>
+    </define>
+
+    <define name="nullContent">
+        <element name="null">
+            <optional>
+                <attribute name="id">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <attribute name="name" />
+
+            <ref name="commonOptionalAttributes" />
+            <ref name="statAttributes" />
+        </element>
+    </define>
+
+    <define name="commonOptionalAttributes">
+        <optional>
+            <attribute name="cache" />
+        </optional>
+        <optional>
+            <attribute name="tags" />
+        </optional>
+        <optional>
+            <attribute name="bombs">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="keys">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="coins">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="hearts">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="soulhearts">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="blackhearts">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="maxhearts">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="cooldown">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="special">
+                <data type="boolean" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="devilprice">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="shopprice">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="addcostumeonpickup">
+                <data type="boolean" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="persistent">
+                <data type="boolean" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="achievement" />
+        </optional>
+        <optional>
+            <attribute name="craftquality">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="hidden">
+                <data type="boolean" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="cleareffectsonremove">
+                <data type="boolean" />
+            </attribute>
+        </optional>
+
+        <optional>
+            <attribute name="customtags" />
+        </optional>
+        <optional>
+            <attribute name="customcache" />
+        </optional>
+    </define>
+
+    <define name="statAttributes">
+        <optional>
+            <attribute name="speed">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="tears">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="flattears">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="tearsmult">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="damage">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="flatdamage">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="damagemult">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="range">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="shotspeed">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="luck">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+
+        <optional>
+            <attribute name="effectspeed">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="effecttears">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="effectflattears">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="effecttearsmult">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="effectdamage">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="effectflatdamage">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="effectdamagemult">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="effectrange">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="effectshotspeed">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="effectluck">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+    </define>
+</grammar>

@@ -1,0 +1,135 @@
+{
+    // VSCODE CONFIG
+    "editor.detectIndentation": false, // this way you choose TAB or SPACE
+    "editor.insertSpaces": true, // for this example I use SPACES
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.associations": {
+        "*.anm2": "xml",
+        ".anm2": "xml",
+        "*.sta": "xml",
+        ".sta": "xml"
+    },
+    // LUA CONFIG
+    "Lua.runtime.special": {
+        // VERY VERY useful, this make "include" works like "require"
+        // i.e. you have class completion when exporting your table from one file to another
+        "include": "require"
+    },
+    "Lua.runtime.builtin": { // disable theses standard libraries from the workspace
+        // Disable "require", this way you NEED to use "include"
+        "package": "disable",
+        // You can add these back if you know what you are doing
+        "io": "disable",
+        "os": "disable"
+    },
+    "Lua.runtime.path": [ // Override so you can't use "?/init.lua" since it does not work with "include"
+        "?.lua"
+    ],
+    "Lua.runtime.pathStrict": true, // Make it so "include" completion show the full path
+    "Lua.diagnostics.severity": { // Since people tends to ignore warnings, I make them errors
+        "deprecated": "Error", // a trick I use is make some function deprecated so they are not used in the project
+        "undefined-global": "Error",
+        "undefined-field": "Error",
+        "missing-fields": "Error",
+        "lowercase-global": "Error",
+        "unused-local": "Warning", // Better to remove dead variables
+    },
+    "Lua.diagnostics.unusedLocalExclude": [ // So you can create unused varible name like "_player" for the callbacks
+        "_*"
+    ],
+    "Lua.diagnostics.neededFileStatus": {
+        // enable both the linter and the name style checks on the project
+        // If "Any" consumes too much, replace by "Open"
+        "codestyle-check": "Any",
+        "name-style-check": "Any"
+    },
+    "Lua.hint.enable": true, // Enable the type hinting next to the text, you either love it or hate it
+    "Lua.hint.paramName": "Literal", // Only show hinting for basic types (i.e. numbers to avoid Magic Numbers)
+    "Lua.completion.autoRequire": false, // Disabled since we use "include"
+    "Lua.completion.showWord": "Disable", // The Autocompletion shows too much clutter with it, so words are disabled
+    "Lua.type.inferParamType": true, // Tries to infer parameterss type from their use in the code, does not work well but can be cool
+    "Lua.format.defaultConfig": {
+        "indent_style": "space", // switch to tab if you want!
+        "indent_size": "4",
+        "max_line_length": "120", // Wrap after line is more than 120 chars
+        "align_call_args": "true",
+        "align_function_params": "true",
+        "align_continuous_assign_statement": "true",
+        "align_continuous_rect_table_field": "always", // ALWAYS align the tables, replace by "true" if you want to make it happend only if you add 2 spaces
+        "align_continuous_line_space": "2",
+        "align_continuous_inline_comment": "true",
+        "align_array_table": "true",
+        "never_indent_before_if_condition": "true",
+        "space_after_comment_dash": "always", // add a space after a comment "--Hello" -> "-- Hello"
+        "quote_style": "double",
+        "trim_trailing_whitespace": "true",
+        "table_separator_style": "comma",
+        "trailing_table_separator": "smart", // Add a comma at the end of the tables
+        "call_arg_parentheses": "always" // ALWAYS call functions with parenthesis
+    },
+    "Lua.nameStyle.config": {
+        "local_name_style": [ // local variables in camelCase like: "local playerDamage = 1"
+            "camel_case",
+        ],
+        "function_param_name_style": [ // function parameters in camelCase "usedParam" OR "_" or "_thisParamIsNotUsed"
+            "camel_case",
+            {
+                "type": "pattern",
+                "param": "_",
+            },
+            {
+                "type": "pattern",
+                "param": "_(\\w+)",
+                "$1": "camel_case"
+            }
+        ],
+        "function_name_style": [ // NON LOCAL functions in PascalCase: "function mod:MyFunc()"
+            "pascal_case",
+        ],
+        "local_function_name_style": [ // LOCAL functions in camelCase: "local function myFunc()"
+            "camel_case",
+        ],
+        "global_variable_name_style": [ // globals can be: "MyModName" or "MY_MOD_NAME"
+            "pascal_case",
+            "upper_snake_case"
+        ],
+        "table_field_name_style": [ // fields from a table can be any of the three
+            "pascal_case",
+            "camel_case",
+            "upper_snake_case"
+        ]
+    },
+    // XML CONFIG
+    // WORK IN PROGRESS
+    "xml.fileAssociations": [
+        {
+            "pattern": "**/entities2.xml",
+            "systemId": "content/xml_schemas/entities2.rng"
+        },
+        {
+            "pattern": "**/items.xml",
+            "systemId": "content/xml_schemas/items.rng"
+        },
+        {
+            "pattern": "**/stringtable.sta",
+            "systemId": "content/xml_schemas/stringtable.rng"
+        },
+        {
+            "pattern": "**/achievements.xml",
+            "systemId": "content/xml_schemas/achievements.rng"
+        },
+        {
+            "pattern": "**/players.xml",
+            "systemId": "content/xml_schemas/players.rng"
+        },
+        {
+            "pattern": "**/pocketitems.xml",
+            "systemId": "content/xml_schemas/pocketitems.rng"
+        }
+    ],
+    "xml.downloadExternalResources.enabled": true,
+}

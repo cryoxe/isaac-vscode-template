@@ -1,0 +1,266 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <ref name="playersContent" />
+    </start>
+
+    <define name="playersContent">
+        <element name="players">
+            <attribute name="root" />
+            <attribute name="portraitroot" />
+            <attribute name="nameimageroot" />
+            <optional>
+                <attribute name="version">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <zeroOrMore>
+                <ref name="playerContent" />
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="playerContent">
+        <element name="player">
+            <attribute name="name" />
+            <attribute name="skin" />
+            <optional>
+                <attribute name="skinColor">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <attribute name="nameimage" />
+            <attribute name="portrait" />
+            <optional>
+                <attribute name="extraportrait" />
+            </optional>
+            <optional>
+                <attribute name="costume">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="costumeSuffix" />
+            </optional>
+            <optional>
+                <attribute name="items" />
+            </optional>
+            <optional>
+                <attribute name="trinket" />
+            </optional>
+            <optional>
+                <attribute name="card" />
+            </optional>
+            <optional>
+                <attribute name="pill" />
+            </optional>
+            <optional>
+                <attribute name="pocketActive" />
+            </optional>
+            <attribute name="birthright" />
+            <optional>
+                <attribute name="bSkinParent" />
+            </optional>
+            <optional>
+                <attribute name="canShoot">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="broken">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="achievement" />
+            </optional>
+            <optional>
+                <attribute name="hidden">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+
+            <ref name="vanillaHealthAttributes" />
+            <ref name="repentogonPlayerAttributes" />
+        </element>
+    </define>
+
+    <define name="vanillaHealthAttributes">
+        <optional>
+            <attribute name="hp">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="armor">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="black">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="bombs">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="keys">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="coins">
+                <data type="integer" />
+            </attribute>
+        </optional>
+    </define>
+
+    <define name="repentogonPlayerAttributes">
+        <optional>
+            <attribute name="innateitems" />
+        </optional>
+        <optional>
+            <attribute name="innatetrinkets" />
+        </optional>
+        <optional>
+            <attribute name="heartcontainers">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="redhearts">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="soulhearts">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="blackhearts">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="goldenhearts">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="bonehearts">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="eternalheart">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="brokenhearts">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="rottenhearts">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="healthtype">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="healthlimit">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="speedmodifier">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="tearsmodifier">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="tearsmultiplier">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="damagemodifier">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="damagemultiplier">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="rangemodifier">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="shotspeedmodifier">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="luckmodifier">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="gigabombs">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="completionparent" />
+        </optional>
+        <optional>
+            <attribute name="nomarks">
+                <data type="boolean" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="noshake">
+                <data type="boolean" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="hideachievement" />
+        </optional>
+        <optional>
+            <attribute name="modcostume">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="hurtsound" />
+        </optional>
+        <optional>
+            <attribute name="deathsound" />
+        </optional>
+        <optional>
+            <attribute name="bloodytears">
+                <data type="boolean" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="flying">
+                <data type="boolean" />
+            </attribute>
+        </optional>
+    </define>
+</grammar>

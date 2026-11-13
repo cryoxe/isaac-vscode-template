@@ -1,0 +1,149 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <ref name="pocketItemsContent" />
+    </start>
+
+    <define name="pocketItemsContent">
+        <element name="pocketitems">
+            <optional>
+                <attribute name="version">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <zeroOrMore>
+                <choice>
+                    <ref name="cardContent" />
+                    <ref name="runeContent" />
+                    <ref name="pillEffectContent" />
+                </choice>
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="cardContent">
+        <element name="card">
+            <ref name="cardAndRuneAttributes" />
+        </element>
+    </define>
+
+    <define name="runeContent">
+        <element name="rune">
+            <ref name="cardAndRuneAttributes" />
+        </element>
+    </define>
+
+    <define name="cardAndRuneAttributes">
+        <attribute name="name" />
+        <attribute name="type">
+            <choice>
+                <value>tarot</value>
+                <value>tarot_reverse</value>
+                <value>suit</value>
+                <value>special</value>
+                <value>rune</value>
+                <value>object</value>
+            </choice>
+        </attribute>
+        <attribute name="pickup">
+            <data type="integer" />
+        </attribute>
+        <optional>
+            <attribute name="id">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <attribute name="description" />
+        <optional>
+            <attribute name="hud" />
+        </optional>
+        <attribute name="mimiccharge">
+            <data type="integer" />
+        </attribute>
+        <optional>
+            <attribute name="announcer" />
+        </optional>
+        <optional>
+            <attribute name="announcer2" />
+        </optional>
+        <optional>
+            <attribute name="announcerdelay">
+                <data type="integer" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="achievement" />
+        </optional>
+        <optional>
+            <attribute name="greedmode">
+                <data type="boolean" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="hidden">
+                <data type="boolean" />
+            </attribute>
+        </optional>
+        <optional>
+            <attribute name="weight">
+                <data type="decimal" />
+            </attribute>
+        </optional>
+    </define>
+
+    <define name="pillEffectContent">
+        <element name="pilleffect">
+            <attribute name="name" />
+            <optional>
+                <attribute name="id">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="description" />
+            </optional>
+            <optional>
+                <attribute name="class">
+                    <choice>
+                        <value>0</value>
+                        <value>0+</value>
+                        <value>0-</value>
+                        <value>1</value>
+                        <value>1+</value>
+                        <value>1-</value>
+                        <value>2</value>
+                        <value>2+</value>
+                        <value>2-</value>
+                        <value>3</value>
+                        <value>3+</value>
+                        <value>3-</value>
+                    </choice>
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="mimiccharge">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="announcer" />
+            </optional>
+            <optional>
+                <attribute name="announcer2" />
+            </optional>
+            <optional>
+                <attribute name="announcerdelay">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="achievement" />
+            </optional>
+            <optional>
+                <attribute name="greedmode">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+        </element>
+    </define>
+</grammar>

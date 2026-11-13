@@ -1,0 +1,136 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <ref name="stringtableContent" />
+    </start>
+
+    <define name="stringtableContent">
+        <element name="stringtable">
+            <optional>
+                <attribute name="version">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <ref name="infoContent" />
+            </optional>
+            <optional>
+                <ref name="languagesContent" />
+            </optional>
+            <zeroOrMore>
+                <choice>
+                    <ref name="categoryContent" />
+                    <ref name="keyContent" />
+                </choice>
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="infoContent">
+        <element name="info">
+            <optional>
+                <attribute name="version">
+                    <data type="decimal" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="rgon_sta_version">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <zeroOrMore>
+                <choice>
+                    <element name="created">
+                        <optional>
+                            <attribute name="date" />
+                        </optional>
+                        <optional>
+                            <attribute name="time" />
+                        </optional>
+                        <optional>
+                            <attribute name="user" />
+                        </optional>
+                    </element>
+                    <element name="exported">
+                        <optional>
+                            <attribute name="date" />
+                        </optional>
+                        <optional>
+                            <attribute name="time" />
+                        </optional>
+                        <optional>
+                            <attribute name="user" />
+                        </optional>
+                    </element>
+                </choice>
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="languagesContent">
+        <element name="languages">
+            <optional>
+                <attribute name="default">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <oneOrMore>
+                <ref name="languageContent" />
+            </oneOrMore>
+        </element>
+    </define>
+
+    <define name="languageContent">
+        <element name="language">
+            <attribute name="id">
+                <data type="integer" />
+            </attribute>
+            <attribute name="index">
+                <data type="integer" />
+            </attribute>
+            <attribute name="name" />
+        </element>
+    </define>
+
+    <define name="categoryContent">
+        <element name="category">
+            <attribute name="name">
+                <choice>
+                    <value>Default</value>
+                    <value>Items</value>
+                    <value>PocketItems</value>
+                    <value>Players</value>
+                    <value>Entities</value>
+                    <value>Curses</value>
+                    <value>Challenges</value>
+                    <value>Minibosses</value>
+                    <value>Stages</value>
+                    <data type="string" />
+                </choice>
+            </attribute>
+            <zeroOrMore>
+                <ref name="keyContent" />
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="keyContent">
+        <element name="key">
+            <attribute name="name" />
+            <ref name="stringElement" />
+            <ref name="stringElement" />
+            <ref name="stringElement" />
+            <ref name="stringElement" />
+            <ref name="stringElement" />
+            <ref name="stringElement" />
+            <ref name="stringElement" />
+            <ref name="stringElement" />
+        </element>
+    </define>
+
+    <define name="stringElement">
+        <element name="string">
+            <text />
+        </element>
+    </define>
+</grammar>

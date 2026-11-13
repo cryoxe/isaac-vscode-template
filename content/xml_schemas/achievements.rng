@@ -1,0 +1,59 @@
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <start>
+        <ref name="achievementsContent" />
+    </start>
+
+    <define name="achievementsContent">
+        <element name="achievements">
+            <optional>
+                <attribute name="gfxroot" />
+            </optional>
+            <optional>
+                <attribute name="version">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <zeroOrMore>
+                <ref name="achievementContent" />
+            </zeroOrMore>
+        </element>
+    </define>
+
+    <define name="achievementContent">
+        <element name="achievement">
+            <attribute name="gfx" />
+            <choice>
+                <group>
+                    <attribute name="name" />
+                    <optional>
+                        <attribute name="text" />
+                    </optional>
+                </group>
+                <attribute name="text" />
+            </choice>
+            <optional>
+                <attribute name="id">
+                    <data type="integer" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="gfxback" />
+            </optional>
+            <optional>
+                <attribute name="hidden">
+                    <data type="boolean" />
+                </attribute>
+            </optional>
+            <optional>
+                <attribute name="steam_name" />
+            </optional>
+            <optional>
+                <attribute name="steam_description" />
+            </optional>
+            <optional>
+                <attribute name="steam_icon" />
+            </optional>
+        </element>
+    </define>
+</grammar>
